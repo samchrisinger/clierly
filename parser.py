@@ -19,7 +19,6 @@
 #
 # The list of paragraphs is the return value.
 #------------------------------------------------------------------
-#a
 
 import re
 import json
