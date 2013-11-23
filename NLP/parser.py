@@ -24,17 +24,22 @@ def main():
             paragraph = paragraph.split(".")
             for sentence in paragraph:
                 sentence = sentence.strip()
-                flags = list()
-                categories = list()
+                flags = set()
+                categories = set()
                 for key in keywords.keys():
                     for keyword in keywords[key]:
                         if (keyword.search(sentence)):
-                            flags.append(keyword.pattern)
-                            categories.append(key)
+                            flags.add(keyword.pattern)
+                            categories.add(key)
                 sentence = (sentence, flags, categories)            
                 paragraphs.append(sentence)
+    tagged = 0.0
+    other = 0.0
     for sentence in paragraphs:
         if len(sentence[2])>0:
-            print str(sentence[0])+" : "+str(sentence[1])
+            tagged+=1
+        else:
+            other+=1
+    print (tagged/other)*100
         
 main()
