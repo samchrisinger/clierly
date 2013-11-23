@@ -1,4 +1,4 @@
-#vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
 #------------------------------------------------------------------
 # parser.py
@@ -23,6 +23,14 @@
 import re
 import json
 
+stats = dict()
+stats["Changes"] = 0
+stats["Violations"] = 0
+stats["Content"] = 0
+stats["Risk"] = 0
+stats["PersonalInformation"] = 0
+stats["Money"] = 0
+ 
 def parse(text):
     paragraphs = list()
 
@@ -33,7 +41,7 @@ def parse(text):
 
     # Creates a dict of Category:[keyword] pairs, compiling the keyword regexps
     keywords = {category: [re.compile(r) for r in rules[category]] for category in rules.keys()}
-    print(keywords.keys())
+    # print(keywords.keys())
 
     # Matches substrings in each sentence to the keyword regular expressions
     text = text.split('\n')
@@ -48,16 +56,28 @@ def parse(text):
                 for keyword in keywords[key]:
                     if (keyword.search(sentence)):
                         flags.add((key, keyword.pattern))
-                        #flags.add(keyword.pattern)
-                        #categories.add(key)
-            #message = _generateMessage(flags, categories)
-            #sentence = (sentence, flags, categories, message)            
             message = _generateMessage(flags)
             flags = [f[0] for f in flags]
             sentence = (sentence, flags, message)
             p_list.append(sentence)
         paragraphs.append(p_list)
-    return paragraphs
+    score= _gatherMetrics(paragraphs)
+    return (score, paragraphs)
+
+# Helper function to gather interesting data
+def _gatherMetrics(paragraphs):
+    sCounter = 0.0
+    tsCounter = 0.0
+    for paragraph in paragraphs:
+        for sentence in paragraph:
+            sCounter += 1
+             # percentage of sentences tagged
+            if sentence[2] != '':
+                tsCounter += 1
+    stats["Percentage of sentences tagged"] = (tsCounter / sCounter) * 100
+
+    return stats["Percentage of sentences tagged"]
+
 
 # Helper function to generate error messages based on categories and flags
 def _generateMessage(flags):
@@ -73,9 +93,11 @@ def _generateMessage(flags):
         category = flag[0]
         flag = flag[1]
         if(category in CHANGE):
+            stats["Changes"] += 1
             message += 'The service may have a right to change terms here. '
             message += '\n'
         elif(category in VIOLATION):
+            stats["Violations"] += 1
             message += 'The service considers this behavior a violation of terms. '
             if(category == 'Termination'):
                 message += 'This violation may be punished by disruption of service. '
@@ -83,12 +105,14 @@ def _generateMessage(flags):
                 message += 'Make sure you satisfy the requirement listed here. '
             message += '\n'
         elif(category in CONTENT):
+            stats["Content"] += 1
             message += 'This section details the rights you have to your own content and the content of others. '
             if (category == 'Deactivation'):
                 message += 'It also details what happens to your information when you account is closed. '
                 #TODO: see if we can figure out what happens to content (deleted or stored + rights)
             message += '\n'
         elif(category in RISK):
+            stats["Risk"] += 1
             message += 'You are agreeing to assume risk here'
             if(category == 'Arbitration'):
                 message += '- and lawyers are involved'
@@ -96,6 +120,7 @@ def _generateMessage(flags):
                 message += '. Make sure you know exactly what you are consenting to'
             message += '. \n'
         elif(category in PERSONALINFO):
+            stats["PersonalInformation"] += 1
             message += 'This section concerns you personal information. '
             if (category == 'PersonalInformation'):
                 message += 'Make sure that you are comfortable giving away this information. '
@@ -105,6 +130,7 @@ def _generateMessage(flags):
                 message += 'Make sure that sensitive information is only shared with third-parties you trust.'
             message += '\n'
         elif(category in MONEY):
+            stats["Money"] +=1
             message += 'This is part of your financial agreement with the service. Make sure you understand how, why, and when you will be charged. '
             message += '\n'
     return message
