@@ -2,7 +2,7 @@
 <head>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script>
-    $(document).ready(){
+    $(document).ready(function(){
       $('#send').on('click', function(){
          var text = $('#dump').val();
          $.post('./parser', {text:text}, function(res){
@@ -13,7 +13,7 @@
   </script>
 </head>
 <body>
-  <textarea id="dump" style="width:800px;height:800px;"></textarea>
+  <textarea id="dump" style="width:800px;height:500px;"></textarea>
   <button id="send">Send</button>
 </body>
 </html>
