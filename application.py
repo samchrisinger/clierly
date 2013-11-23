@@ -2,7 +2,6 @@ from flask import *
 from parser import parse
 import json
 
-#aqaa
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
