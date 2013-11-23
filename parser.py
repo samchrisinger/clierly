@@ -27,12 +27,15 @@ def parse(text):
     paragraphs = list()
 
     # Reads in the rules
-    with open('rules.json') as rules:
-        rules = rules.read()
-        rules = json.loads(rules)
+    with open('rules.json') as f:
+        f = f.read()
+        js = json.loads(f)
+        rules = js['rules']
+        excludes = js['exclusions']
 
     # Creates a dict of Category:[keyword] pairs, compiling the keyword regexps
     keywords = {category: [re.compile(r) for r in rules[category]] for category in rules.keys()}
+    excludes = [re.compile(r) for r in excludes]
     print(keywords.keys())
 
     # Matches substrings in each sentence to the keyword regular expressions
@@ -44,6 +47,15 @@ def parse(text):
             sentence = sentence.strip()
             flags = set()
             categories = set()
+            exclude = False
+            for e in excludes:
+                if e.search(sentence):
+                    exclude = True
+                    break
+            if exclude:
+               sentence = (sentence, flags, message)
+               p_list.append(sentence)
+               break
             for key in keywords.keys():
                 for keyword in keywords[key]:
                     if (keyword.search(sentence)):
