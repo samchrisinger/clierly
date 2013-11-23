@@ -7,7 +7,7 @@ app.config['DEBUG'] = True
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', css=css,images=images,scripts=scripts)
 
 @app.route('/parser',methods=['POST'])
 def process():
