@@ -53,6 +53,7 @@ def parse(text):
             #message = _generateMessage(flags, categories)
             #sentence = (sentence, flags, categories, message)            
             message = _generateMessage(flags)
+            flags = [f[0] for f in flags]
             sentence = (sentence, flags, message)
             p_list.append(sentence)
         paragraphs.append(p_list)

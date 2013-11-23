@@ -13,7 +13,7 @@ def index():
 def process():
     text = parse(request.form['text'])
     def map_text(p):
-        return [{'text':sentence[0],'keywords':list(sentence[1]),'categories':list(sentence[2])} for sentence in p]
+        return [{'text':sentence[0],'categories':list(sentence[1]),'message':sentence[2]} for sentence in p]
     text = map(map_text, text)
     return json.dumps(text)
 
