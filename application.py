@@ -1,7 +1,6 @@
 from flask import *
 from NLP import parser
 import json
-import urls
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
