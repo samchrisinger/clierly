@@ -22,7 +22,6 @@
 #
 import re
 import json
-import os
 
 stats = dict()
 stats["Changes"] = 0
@@ -36,8 +35,7 @@ def parse(text):
     paragraphs = list()
 
     # Reads in the rules
-    print os.listdir('.')
-    with open('./rules.json') as f:
+    with open('NLP/parsers/keyword/rules.json') as f:
         f = f.read()
         js = json.loads(f)
         rules = js['rules']
