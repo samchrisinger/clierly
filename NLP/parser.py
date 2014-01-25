@@ -19,7 +19,7 @@
 #
 # The list of paragraphs is the return value.
 #------------------------------------------------------------------
-#
+
 import re
 import json
 
@@ -98,50 +98,50 @@ def _generateMessage(flags):
     RISK = ['Risk','Arbitration','Consent', 'Restrictions']
     PERSONALINFO = ['PersonalInformation','Security', 'Restrictions']
     MONEY = ['Money']
-    message = ''
+    messages = set()
     for flag in flags:
         category = flag[0]
         flag = flag[1]
         if(category in CHANGE):
             stats["Changes"] += 1
-            message += 'The service may have a right to change terms here. '
-            message += '\n'
+            message = 'The service may have a right to change terms here. '
+            messages.add(message)
         elif(category in VIOLATION):
             stats["Violations"] += 1
-            message += 'The service considers this behavior a violation of terms. '
+            message = 'The service considers this behavior a violation of terms. '
             if(category == 'Termination'):
                 message += 'This violation may be punished by disruption of service. '
             elif(flag == 'must\sbe'):
                 message += 'Make sure you satisfy the requirement listed here. '
-            message += '\n'
+            messages.add(message)
         elif(category in CONTENT):
             stats["Content"] += 1
-            message += 'This section details the rights you have to your own content and the content of others. '
+            message = 'This section details the rights you have to your own content and the content of others. '
             if (category == 'Deactivation'):
                 message += 'It also details what happens to your information when you account is closed. '
                 #TODO: see if we can figure out what happens to content (deleted or stored + rights)
-            message += '\n'
+            messages.add(message)
         elif(category in RISK):
             stats["Risk"] += 1
-            message += 'You are agreeing to assume risk here'
+            message = 'You are agreeing to assume risk here'
             if(category == 'Arbitration'):
                 message += '- and lawyers are involved'
             elif(category == 'Restrictions'):
                 message += '. Make sure you know exactly what you are consenting to'
-            message += '. \n'
+            messages.add(message)
         elif(category in PERSONALINFO):
             stats["PersonalInformation"] += 1
-            message += 'This section concerns you personal information. '
+            message = 'This section concerns you personal information. '
             if (category == 'PersonalInformation'):
                 message += 'Make sure that you are comfortable giving away this information. '
             elif(category == 'Security'):
                 message += 'Make sure that they are storing your information securely. '
             elif(category == 'Consent'):
                 message += 'Make sure that sensitive information is only shared with third-parties you trust.'
-            message += '\n'
+            messages.add(message)
         elif(category in MONEY):
             stats["Money"] +=1
-            message += 'This is part of your financial agreement with the service. Make sure you understand how, why, and when you will be charged. '
-            message += '\n'
-    return message
+            message = 'This is part of your financial agreement with the service. Make sure you understand how, why, and when you will be charged. '
+            messages.add(message)
+    return messages
     
