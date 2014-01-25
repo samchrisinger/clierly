@@ -207,7 +207,7 @@
 			} else {
 				$('#textForm').removeClass('has-error');  	
 				$('#errorMsg').html(''); 	
-				$.post('http://198.100.45.68:8000/parser', {text:content}, function(res){
+				$.post('../parser', {text:content}, function(res){
 				   res = JSON.parse(res);
 			           var score = res.score;
 				   var percent = (score/50)*100;

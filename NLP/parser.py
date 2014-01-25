@@ -35,7 +35,7 @@ def parse(text):
     paragraphs = list()
 
     # Reads in the rules
-    with open('rules.json') as f:
+    with open('NLP/rules.json') as f:
         f = f.read()
         js = json.loads(f)
         rules = js['rules']
