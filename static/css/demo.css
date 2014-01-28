@@ -1,5 +1,18 @@
 /* Clie/r.ly  */
 
+.dark-bg-front{
+	background: #3498DB url(../images/bg-large.jpg) repeat; 
+	color: white;
+margin: 0 -200px;
+box-shadow: inset 0 0 15px -5px #333;
+}
+
+.dark-bg{
+	background: #3498DB ; 
+	color: white;
+margin: 0 -200px;
+}
+
 .commentBox {
     padding: 10px 10px 1px 10px;
     float: left;
@@ -221,9 +234,16 @@ background-color: rgba(238, 238, 238, 0.28);
 
 
 
+.text-box {
+	margin: 25px auto;
+}
 
-
-
+.front-row {
+	margin-top: 25px;
+}
+.front-row p {
+	font-weight: 300;
+}
 
 .dropdown-arrow-inverse {
   border-bottom-color: #34495e !important;
@@ -233,7 +253,11 @@ background-color: rgba(238, 238, 238, 0.28);
   max-width: 970px !important;
 }
 .demo-headline {
-padding: 70px 0 100px;
+padding: 50px 0 50px;
+  text-align: center;
+}
+.demo-headline-front {
+padding: 120px 0 150px;
   text-align: center;
 }
 .demo-logo {
@@ -260,6 +284,7 @@ padding: 70px 0 100px;
 }
 .demo-row {
   margin-bottom: 20px;
+  margin-top: 25px;
 }
 .demo-row .demo-heading-note,
 .demo-row .demo-text-note {

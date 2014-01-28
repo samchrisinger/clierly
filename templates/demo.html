@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>clie/r.ly Demo </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><!-- Loading Bootstrap -->
+    <link href="/static/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"><!-- Loading Flat UI -->
+    <link href="/static/css/flat-ui.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/demo.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="/static/images/favicon.ico"><!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <script src="/static/js/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <script src="/static/example.js"></script>
+</head>
+
+<body>
+    <div class="container"> 
+        <div class="demo-headline dark-bg">
+            <h1 class="demo-logo"></h1>
+
+            <div>
+                <h1 class="demo-logo"><img src="/static/images/icons/svg/retina.svg" alt="Check"> <br />Demo </h1>If there is a document you would like analyzed, copy paste the text below. </p>
+            </div>
+        </div><!-- /demo-headline -->
+
+
+        <div class="row demo-row">
+            <div class="col-md-9">
+				<div id="textForm" class="form-group ">
+				<textarea id="textpaste"  class="form-control" />Copy paste the text of the terms and service content here. Click Analyze New Document when you are ready.</textarea> 
+		      </div>
+		            
+            </div>            
+            <div class="col-md-3 ">
+            	<p id="errorMsg" class="has-error"> </p>
+                <a id="clearButton" href="#fakelink" class="btn btn-block btn-lg btn-default">Clear</a>
+                <a id="analyzeButton" href="#fakelink" class="btn btn-block btn-lg btn-primary">Analyze New Document</a>
+            </div>            
+        </div>    				
+
+
+        <hr class="soften" />
+       
+
+
+        <h4 class="text-center">Your Analysis Results:</h4>
+
+        <div class="row demo-row">
+            <div class="col-md-6 col-md-offset-3">
+                <p class="lead text-center">Attention Rating:</p>
+
+                <div class="progress">
+                    <div class="progress-bar" style="width:0%;"></div>
+
+                    <div class="progress-bar progress-bar-success" style="width: 0%;"></div>
+                    <div class="progress-bar progress-bar-warning" style="width: 0%;"></div>
+
+                    <div class="progress-bar progress-bar-danger" style="width: 0%;"></div>
+
+                    <div class="progress-bar progress-bar-info" style="width: 0%;"></div>
+                </div>
+            </div>
+        </div>
+        <center><span id="score" style="color:black; !important;font-size:30px;"></span></center>
+        <p class="text-center">Theme Labels</p>
+
+        <div class="row demo-row">
+            <div class="col-md-2">
+                <a href="#fakelink" class="btn btn-block btn-primary">Content</a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="#fakelink" class="btn btn-block btn-warning">Change</a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="#fakelink" class="btn btn-block btn-info">Money</a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="#fakelink" class="btn btn-block btn-danger">Violation</a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="#fakelink" class="btn btn-block btn-inverse">Personal Information</a>
+            </div>
+
+            <div class="col-md-2">
+                <a href="#fakelink" class="btn btn-block btn-success">Risk</a>
+            </div>
+        </div>
+        <hr class="soften">
+
+
+          
+        <div class="row">
+            <div class="col-md-8" id="text">
+                    <div class="article">
+                        <div class="article-body content-body wikistyle markdown-format">
+
+                        </div>
+                    </div>
+            </div>
+            <div class="col-md-4">
+                          <div class="btn-toolbar">
+                <div class="btn-group">
+                  <a id="showToggle" class="btn btn-default" href="#fakelink" ><span class="fui-eye"> Show All</span></a>
+                </div>
+              </div> <!-- /toolbar -->
+
+			  <div id="commentCol"> 
+
+
+				  
+			  </div>
+			  
+            </div>
+            
+            </div><!-- /.</span><span class="unit">demo-content-wide -->
+        </div>
+        </div>
+    </div><!-- /container -->
+
+<div id="navBox"><div id="pageHolder"></div> </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <h4>Credits </h4>
+                    <p>Created by Fabian, Sam and Caner </p>
+                    <p>This page uses the <a href="http://designmodo.com/flat-free" target="_blank">DesignModo Flat UI</a> and <a href="http://getbootstrap.com/" target="_blank">Bootstrap 3</a>.</p>
+               
+                </div><!-- /col-md-7 -->
+
+                <div class="col-md-5">
+                    <div class="footer-banner">
+                        <h3 class="footer-title">UVA Hackathon</h3>
+                        <p>November 22, 2013</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer><!-- Load JS here for greater good =============================-->
+
+
+</script><script src="/static/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript">
+</script><script src="/static/js/jquery.ui.touch-punch.min.js" type="text/javascript">
+</script><script src="/static/js/bootstrap.min.js" type="text/javascript">
+</script><script src="/static/js/bootstrap-select.js" type="text/javascript">
+</script><script src="/static/js/bootstrap-switch.js" type="text/javascript">
+</script><script src="/static/js/flatui-checkbox.js" type="text/javascript">
+</script><script src="/static/js/flatui-radio.js" type="text/javascript">
+</script><script src="/static/js/jquery.tagsinput.js" type="text/javascript">
+</script><script src="/static/js/jquery.placeholder.js" type="text/javascript">
+</script><script src="/static/js/jquery.stacktable.js" type="text/javascript">
+</script><script src="/static/js/jquery.scrollTo.min.js" type="text/javascript">
+
+</script><script src="http://vjs.zencdn.net/4.1/video.js" type="text/javascript">
+</script><script src="/static/js/application.js" type="text/javascript">
+</script>
+
+<script type="text/javascript">
+
+(function(){ 
+
+	
+	$('#text').find('p').hide();  // Hide all paragraphs first
+	$('<div class="hiddenMsg">This content is hidden. Click the box to show. </div>').insertAfter('#text p');		// show div that says paragraph is not important for hidden. Show option to show.  
+	$('.highlighted').parent('p').show().find('.hiddenMsg').hide();// show paragraphs that have highlighted content
+	$('.unit').on('mouseenter', function(){
+		$(this).css('color', '#34495e'); 
+	});
+	$('.unit').on('mouseleave', function(){
+		$(this).css('color', '#bbb'); 
+	});
+
+	// Show contents when message 
+	$(document).on('click', '.hiddenMsg', function(){
+		$(this).hide().prev('p').show();
+	}); 
+
+	// empty the text Row
+	$('#clearButton').on('click', function(){		
+		$('#textpaste').val('');
+		$('#errorMsg').html(''); 	
+		$('#textForm').removeClass('has-error');  	
+					
+	}); 
+
+	// Text analysis button is clicked
+	$('#analyzeButton').on('click', function(){
+		var content = $('#textpaste').val();
+		var text = 'Copy paste the text of the terms and service content here. Click Analyze New Document when you are ready.'; 
+		if(content == text || content.length < 1 ){
+				$('#textForm').addClass('has-error'); 
+				$('#errorMsg').html('The text box is empty, please try again.'); 	
+			} else {
+				$('#textForm').removeClass('has-error');  	
+				$('#errorMsg').html(''); 	
+				$.post('../parser', {text:content}, function(res){
+				   res = JSON.parse(res);
+			           var score = res.score;
+				   var percent = (score/50)*100;
+			           if(percent>66.66666666666){
+                                     var rem = percent-66.6666666666;
+                                     $('.progress-bar-danger').css('width', rem+'%');
+                                     $('.progress-bar-warning').css('width', '33%');
+                                     $('.progress-bar-success').css('width', '33%');
+                                   }
+                                   else if(percent>33.333333333333333){
+                                       var rem = percent-33.333333333333333333
+                                     $('.progress-bar-danger').css('width', '0%');
+                                     $('.progress-bar-warning').css('width', rem+'%');
+                                     $('.progress-bar-success').css('width', '33%');
+                                    }
+                                    else{
+                                        var rem = percent;
+                                     $('.progress-bar-danger').css('width', '0%');
+                                     $('.progress-bar-warning').css('width', '0%');
+                                     $('.progress-bar-success').css('width', rem+'%');
+
+                                    }
+                                    $('#score').val(Math.floor(percent/10));              
+              			   SetData(res.text);
+				   NavBox();
+				   PlaceComments();
+				});
+			}	
+	}); 
+
+
+	$('#textpaste').focus(function(){
+		var content = $(this).val(); 
+		var text = 'Copy paste the text of the terms and service content here. Click Analyze New Document when you are ready.'; 
+		if(content == text ){
+				$(this).val(''); 	
+			}
+	})
+ 
+
+	// Show hide text
+	// click to show everything
+	$('#showToggle').on('click', function(){
+		if($(this).hasClass('active')){
+			$('#text').find('p').hide();
+			$('<div class="hiddenMsg">This content is hidden. Click the box to show. </div>').insertAfter('#text p');		// show div that says paragraph is not important for hidden. Show option to show.  
+			$('.highlighted').parent('p').show().find('.hiddenMsg').hide();// show paragraphs that have highlighted content
+			$('#showToggle').html('<span class="fui-eye"> Show All');		
+			$('#showToggle').removeClass('active'); 
+			debugger; 
+		} else {
+			$('#text').find('p').fadeIn();
+			$('.hiddenMsg').remove(); 
+			$(this).addClass('active').html('<span class="fui-eye">  Hide');		
+			
+		}
+	}); 
+
+
+$(document).on('click', '.strip', function(){
+	var textid = $(this).attr('textid'); // get textid
+	var selector =  ".highlighted[textid="+textid+"]"; 
+/* 	var scrollTop = $(selector).scrollTop(); */
+	
+	$(window).scrollTo(selector);
+	//console.log('hi');
+}); 
+
+
+$(window).scroll(function() {
+	// show hide the navigation box
+	var textTop = $('#text').offset();
+	var viewTop = $( window ).scrollTop();
+	if(viewTop> textTop.top-200){
+		$('#navBox').show();
+		
+		// height of pageHolder
+		var viewHeight = $( window ).height(); // get the window height
+		var textHeight = $('#text').height();// get total height of the text
+		var navBoxHeight = $('#navBox').height(); 
+		var pageHeight = (viewHeight*navBoxHeight) / textHeight; 
+		$('#pageHolder').height(pageHeight); 
+
+		// top offset of pageHolder
+		var pageOffset = ((viewTop-1200)*navBoxHeight)/textHeight; 
+		$('#pageHolder').css('margin-top', pageOffset-5); 
+		
+	} else {
+		$('#navBox').hide(); 		
+	}
+	
+	
+});
+function PlaceComments(){
+	// go through each .commentBox element
+	$('.commentBox').each(function(){
+		var content = $(this).attr('textid');  // get the textid attribute
+		var selector =  ".highlighted[textid="+content+"]"; 
+		var position = $(selector).position(); // get the offset from top of the highlighted element with id attribute = id
+		$(this).css('top', position.top); 
+	}); 
+	$('.strip').each(function(){
+		var content = $(this).attr('textid');  // get the textid attribute
+		var selector =  ".highlighted[textid="+content+"]"; 
+		var position = $(selector).position(); // get the offset from top of the highlighted element with id attribute = id
+		var navBoxHeight = $('#navBox').height(); 
+		var textHeight = $('#text').height();// get total height of the text
+		var stripOffset = ((position.top)*navBoxHeight)/textHeight; 
+		$(this).css('margin-top', stripOffset); 
+		//console.log('content: '+navBoxHeight); 
+		
+	}); 
+	$(document).on('mouseover', '.commentBox', function(){
+	      $('.commentBox').css({"z-index":"1", "height": "40px", "overflow": "hidden", "box-shadow":"0 0 0 #ccc"}); 
+	        $(this).css({"z-index":"99", "height": "auto", "overflow": "auto", "box-shadow": "0 0 5px #ccc"}); 
+	});
+}	
+
+function NavBox(){
+	var viewHeight = $( window ).height(); // get viewport height;
+	var textHeight = $('#text').height(); // get text height
+	$('#navBox').height(viewHeight-100); 
+		
+}
+
+function SetData(example){
+	var total = example.length; 
+	var i, o, textDump = ""; 
+	
+	for(i =0; i < total; i++){ // paragraph level 
+		o = example[i]; 
+	        var pTotal = o.length; 
+		if(pTotal == 0 && o[0].text == "")
+		      continue;
+		textDump += '<p class="textP">';
+	
+		var n,m, classText, contentText; 
+		var highlight =false;
+		for(n=0; n<pTotal; n++){  // sentence level 
+			m = o[n]; 
+			if(m.categories.length == 0){
+				classText="unit"; 
+			} else {
+				classText = "highlighted "; 
+				classText += m.categories.join(" ");
+				highlight = true;
+			// Set comments here 
+			var commentHTML = '<div class="commentBox '+m.categories.join(" ")+'" textid="'+i+'_'+n+'"> <div class="arrow arrowColor"> </div><p>'+m.message+'</p></div>' ;
+			$('#commentCol').append(commentHTML); 				
+			
+			var stripHTML = '<div class="strip '+m.categories.join(" ")+'" textid="'+i+'_'+n+'"> </div>';
+			$('#navBox').append(stripHTML);   				 
+			}
+			if(m.text != ""){
+				m.text += ". ";  
+			}
+		
+			textDump += '<span textid="'+i+'_'+n+'" class=" '+classText+'">'+m.text+'</span>'; //prepare
+			if(!highlight){
+				   textDump+='<div class="hiddenMsg">This content is hidden. Click the box to show. </div>';
+		        }
+		}
+		textDump += '</p>'; 
+		
+	}
+	//console.log(textDump);
+	$('#text').html(textDump); 
+				$('.hiddenMsg').prev('p').hide();
+//				$('<div class="hiddenMsg">This content is hidden. Click the box to show. </div>').insertAfter('#text p');		// show div that says paragraph is not important for hidden. Show option to show.  
+//			$('.highlighted').parent('p').show();// show paragraphs that have highlighted content
+
+}
+$('#navBox').hide(); 
+
+	
+ })();
+
+
+
+</script>
+</body>
+</html>
